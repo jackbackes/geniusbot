@@ -1,0 +1,17 @@
+{
+  "name": "geniusbot",
+  "description": "",
+  "main": "server/start.js",
+  "authors": [
+    "thejohnbackes <jbackes@thisismotive.com>"
+  ],
+  "license": "ISC",
+  "homepage": "geniusbot.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
