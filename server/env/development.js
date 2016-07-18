@@ -1,5 +1,5 @@
 module.exports = {
-  "DATABASE_URI": "postgres://localhost:5432/codeGenius",
+  "DATABASE_URI": "postgres://localhost:5432/GeniusBot",
   "SESSION_SECRET": "Albert Einstein is my real dad",
   "GITHUB": {
     "clientID": "4904149d011933c074fd",
