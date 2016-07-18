@@ -8,12 +8,7 @@ const env = require('../../env')
 
 module.exports = router;
 
-
-if(env.MOCK){
-  routerUse('/', './api/mock')
-} else{
   routerUse('/', './api');
-}
 
 // Make sure this is after all of
 // the registered routes!
