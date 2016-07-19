@@ -33,7 +33,7 @@ export const GoogleMap = React.createClass({
   render() {
     return (
       <Gmaps
-        width={'800px'}
+        width={'100%'}
         height={'600px'}
         lat={coords.lat}
         lng={coords.lng}
