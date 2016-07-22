@@ -4,11 +4,11 @@ import React from 'react';
 import {requestSendMessage} from '../../Actions/index.js';
 
 const Promise = require('bluebird');
-import {GoogleMap} from './Components/GoogleMap';
+import AirportMap from './Components/GoogleMap/AirportMap';
 const _ = require('lodash');
 import {fetchOrigin, fetchDestination, calculateDistance} from './methods';
 export {travelReducer} from './reducer';
-// import {combineReducers} from 'redux';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 function* travelGenerator (){
@@ -30,7 +30,7 @@ function* travelGenerator (){
           {message, chatModules} = select(getState())
         ) )
         .then( ()=>
-          dispatch(requestSendMessage(`I understand you are starting from ${chatModules.travel.origin.name}. Does this look correct?`, 2 /*, [<GoogleMap key={0} />]  */))
+          dispatch(requestSendMessage(`I understand you are starting from ${chatModules.travel.origin.name}. Does this look correct?`, 2 , [ React.createElement(AirportMap({origin: getOrigin(selectObj)}), {key: 0} ) ]  ))
       )
 
     input = yield 'starting airport confirmation';
@@ -47,7 +47,7 @@ function* travelGenerator (){
           {message, chatModules} = select(getState())
         ) )
         .then( ()=>
-          dispatch(requestSendMessage(`I understand that your final destination is ${chatModules.travel.destination.name}. Does this look correct?`, 2/*, [(<GoogleMap key={0} />)] */)) )
+          dispatch(requestSendMessage(`I understand that your final destination is ${chatModules.travel.destination.name}. Does this look correct?`, 2, [ React.createElement(AirportMap({destination: getDestination(selectObj)}), {key: 0} ) ])) )
 
     input = yield 'destination airport confirmation';
     ({message, chatModules} = input);
@@ -57,9 +57,9 @@ function* travelGenerator (){
         .then( ()=> (
           {message, chatModules} = select(getState())
         ) )
-        .then(()=> dispatch(requestSendMessage(`You are travelling from ${getOrigin(selectObj).name} to ${getDestination(selectObj).name}. The distance is ${getDistance(selectObj, 'km')}.`, 2/*, [(<GoogleMap key={0} />)] */ )) )
+        .then(()=> dispatch(requestSendMessage(`You are travelling from ${getOrigin(selectObj).name} to ${getDestination(selectObj).name}. The distance is ${getDistance(selectObj, 'km')}.`, 2, [ React.createElement(AirportMap({destination: getDestination(selectObj), origin: getOrigin(selectObj)}), {key: 0} ) ] )) )
         .then( ()=> input.currentCommand = null )
-        .then( ()=> dispatch(requestSendMessage("Is there anything else I can help you with?", 2) ) )
+        .then( ()=> dispatch(requestSendMessage("Thanks for using my travel service!", 2, [<RaisedButton href="https://drive.google.com/open?id=0B78g7xzuPItKU3d3MFdZUEtRTkU" label="Get John's resume!" />]) ) )
 
 }
 
