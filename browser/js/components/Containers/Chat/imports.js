@@ -1,4 +1,4 @@
 'use strict';
 
-export {ChatBox} from '../../Presentationals';
+export {ChatBox, ChatInput} from '../../Presentationals';
 export {ChatProvider} from '../../Providers';

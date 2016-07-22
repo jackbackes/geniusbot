@@ -1,21 +1,15 @@
 'use strict';
 
 import React from 'react';
-import {ChatBox} from './imports';
+import {ChatBox, ChatInput} from './imports';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 
 const style={
   chat: {
     minHeight: '100vh',
     minWidth: '500px',
-    width: '30vw'
-  },
-  chatInput: {
-    position: 'fixed',
-    bottom: '0px',
-    width: '100vw',
-    backgroundColor: 'white'
+    width: '30vw',
+    marginBottom: '30px'
   }
 }
 
@@ -30,9 +24,7 @@ const Chat = React.createClass({
           zDepth={3}
           style={style.chat}
         />
-        <Paper style={style.chatInput} children={
-          <TextField id={'chatInput'} style={style.chatInput} />
-        } />
+        <ChatInput />
       </div>
     )
   }
