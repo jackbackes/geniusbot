@@ -1,8 +1,7 @@
 'use strict';
 
 import {GoogleMap} from '../../Providers/ChatProvider/chatModules/Travel/Components/GoogleMap';
-import {ChatInput, GeniusBotImages} from '../index.js';
-import {chatList} from './chatList.js';
+import {ChatInput, GeniusBotImages, Message} from '../index.js';
+import ChatProvider from '../../Providers/ChatProvider';
 
-
-export {ChatInput, GeniusBotImages, GoogleMap, chatList};
+export {ChatInput, GeniusBotImages, GoogleMap, ChatProvider, Message};
