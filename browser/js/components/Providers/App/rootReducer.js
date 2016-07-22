@@ -2,13 +2,19 @@
 
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import {ux, currentData, staticData} from './Reducers';
+import { chatReducer, travelReducer } from '../ChatProvider/exportReducers';
+import { uxReducer } from './Reducers/ux';
+
 
 const rootReducer = combineReducers({
-  ux,
-  currentData,
-  staticData,
-  routing: routerReducer
+  chat: chatReducer,
+  chatModules: combineReducers({
+    travel: travelReducer
+  }),
+  routing: routerReducer,
+  ux: uxReducer
 })
 
-export default rootReducer
+console.log('root reducer', rootReducer);
+
+export default rootReducer;
