@@ -7,5 +7,6 @@ module.exports = {
     "callbackURL": "http://127.0.0.1:1337/auth/github/callback"
   },
   "LOGGING": true,
-  "MOCKDB": true
+  "MOCKDB": true,
+  "GOOGLE_MAP_KEY": "AIzaSyA0f8iW6NKLrhAiN8lXPEfh2k7l2DdRISM",
 };
