@@ -3,6 +3,6 @@
 import App from './App';
 // import AuthProvider from './AuthProvider';
 import ChatProvider from './ChatProvider';
-// import UserProvider from './UserProvider';
+import {chatActionCreators} from './ChatProvider';
 
-export {App, ChatProvider};
+export {App, ChatProvider, chatActionCreators};
