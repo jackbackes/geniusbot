@@ -15,5 +15,6 @@ module.exports = {
         "clientSecret": process.env.GITHUB_CLIENT_SECRET,
         "callbackURL": process.env.GITHUB_CALLBACK_URL
     },
-    "LOGGING": true
+    "LOGGING": true,
+    "GOOGLE_MAP_KEY": process.env.GOOGLE_MAP_KEY
 };
