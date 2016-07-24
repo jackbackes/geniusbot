@@ -136,7 +136,7 @@ gulp.task('buildJSProduction', function() {
       presets: ['es2015']
     }))
     .pipe(ngAnnotate())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./public'));
 });
 

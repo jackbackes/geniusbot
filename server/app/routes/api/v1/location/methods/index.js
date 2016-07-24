@@ -19,7 +19,10 @@ const createSearch = (query, type='airport', key=GOOGLE_MAP_KEY) => {
 
 export const fetchLocation = (query, type) =>
   axios.request(createSearch(query, type) )
-  .then( response => response.data.results[0] )
+  .then( response => {
+    console.log(response);
+    return response.data.results[0]
+  } )
 
 
 export const calculateDistance = (coord1, coord2) => haversine(coord1, coord2);

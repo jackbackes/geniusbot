@@ -16,7 +16,9 @@ const Promise = require('bluebird');
 router.get('/airport', (req, res, next)=>
   Promise.try( ()=> console.log('getting airport location', req.query) )
     .then( ()=> fetchLocation(req.query.query, req.query.type) )
-    .then( results => res.send(results) )
+    .then( results => {
+      console.log(results);
+      return res.send(results)} )
     .catch( error => {
       console.log(error);
       return res.status(500).send(error)
