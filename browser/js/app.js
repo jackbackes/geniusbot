@@ -7,8 +7,8 @@ import { render }  from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import routes from './components/Providers/App/routes'
-import configureStore from './components/Providers/App/configureStore'
+import routes from './components/Providers/App/Routes/index.js'
+import configureStore from './components/Providers/App/configureStore.js'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 // import {GeniusBotObserver, GeniusBotSelector} from './components/Providers/ChatProvider/chatModules';
 

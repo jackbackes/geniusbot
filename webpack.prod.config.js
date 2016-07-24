@@ -4,12 +4,15 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   watch: true,
   entry: ['./browser/js/app.js', './browser/scss/main.scss'],
   output: {
     path: __dirname + '/public',
     filename: 'main.js'
+  },
+  stats: {
+    error: true
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss', '.css']

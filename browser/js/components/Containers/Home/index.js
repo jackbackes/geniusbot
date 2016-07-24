@@ -56,6 +56,14 @@ const styles = {
     letterSpacing: '1px',
     marginBottom: '20px'
   },
+  small: {
+    fontSize: '14px',
+    color: 'white',
+    fontWeight: 200,
+    textShadow: '0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black',
+    letterSpacing: '1px',
+    marginBottom: '20px'
+  },
   center: {
     textAlign: 'center'
   }
@@ -70,8 +78,12 @@ class Home extends Component {
           <div style={styles.paperStyle}>
             <div style={styles.header}>GeniusBot</div>
             <hr style={styles.hr} />
-            <p style={styles.p}>GeniusBot is your friendly, intergalactic<br />intelligent chat bot!</p>
+            <p style={styles.p}>GeniusBot is your friendly, intergalactic<br />intelligent chat bot!***</p>
             {GetStarted('chat')}
+            <br />
+            <br />
+            <hr style={styles.hr} />
+            <p style={styles.small}>***Who only knows how to calculate distances between airports right now...</p>
           </div>
           {this.props.pathName
             ? <Snackbar

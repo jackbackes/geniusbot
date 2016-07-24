@@ -44,7 +44,7 @@ let distance = handleAction(CALCULATE_DISTANCE, {
   throw(state, action){
     return action.payload
   }
-}, initialDistance);;
+}, initialDistance);
 
 export const travelReducer = combineReducers({
   origin,

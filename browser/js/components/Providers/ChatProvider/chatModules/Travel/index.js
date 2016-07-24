@@ -57,11 +57,12 @@ function* travelGenerator (){
         .then( ()=> (
           {message, chatModules} = select(getState())
         ) )
-        .then(()=> dispatch(requestSendMessage(`You are travelling from ${getOrigin(selectObj).name} to ${getDestination(selectObj).name}. The distance is ${getDistance(selectObj, 'km')}.`, 2, [ React.createElement(AirportMap({destination: getDestination(selectObj), origin: getOrigin(selectObj)}), {key: 0} ) ] )) )
+        .then(()=> dispatch(requestSendMessage(`You are travelling from ${getOrigin(selectObj).name} to ${getDestination(selectObj).name}. The distance is ${getDistance(selectObj, 'nautical miles')}, or ${getDistance(selectObj, 'km')}.`, 2, [ React.createElement(AirportMap({destination: getDestination(selectObj), origin: getOrigin(selectObj)}), {key: 0} ) ] )) )
         .then( ()=> input.currentCommand = null )
-        .then( ()=> dispatch(requestSendMessage("Thanks for using my travel service!", 2, [<RaisedButton href="https://drive.google.com/open?id=0B78g7xzuPItKU3d3MFdZUEtRTkU" label="Get John's resume!" />]) ) )
+        .then( ()=> dispatch(requestSendMessage("Thanks for using my travel service! By the way, I was built in React and Redux.", 2, [(<RaisedButton href="https://drive.google.com/open?id=0B78g7xzuPItKU3d3MFdZUEtRTkU" label="Get John's resume!" />)]) ) )
 
-}
+      }
+
 
 function getOrigin({select, getState}){
   return select(getState()).chatModules.travel.origin
@@ -79,6 +80,8 @@ function getDistance({select, getState}, unit){
     case 'kilometers':
       return `${Math.floor(distanceValue/1000)} ${unit}`;
       break;
+    case 'nautical miles':
+      return `${Math.floor(distanceValue/1852)} ${unit}`
     default:
       return distanceValue;
     }
