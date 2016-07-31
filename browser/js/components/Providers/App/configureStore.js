@@ -2,18 +2,13 @@
 
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
-import createLogger from 'redux-logger'
-import thunkMiddleware from 'redux-thunk'
 import rootReducer from './rootReducer'
-import {GeniusBotObserver} from '../ChatProvider/chatModules';
+import middleware from './middleware';
 
 
 export default function configureStore (history, initialState) {
 
-  const middlewares = [thunkMiddleware, routerMiddleware(history), GeniusBotObserver]
-  if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
-  }
+  const middlewares = [routerMiddleware(history), ...middleware]
 
   const enhancers = compose(
     applyMiddleware(...middlewares),

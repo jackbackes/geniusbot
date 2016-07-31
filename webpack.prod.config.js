@@ -36,6 +36,10 @@ module.exports = {
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
+    new webpack.DefinePlugin({
+      GA_TRACKING_CODE: JSON.stringify('UA-81436775-1'),
+      GA_CONFIG: {}
+    }),
     new WatchIgnorePlugin([
             path.resolve(__dirname, './node_modules/'),
     ])

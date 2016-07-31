@@ -27,7 +27,6 @@ export const clearChatField =
 export const requestSendMessage =
   (message, userId, attachments) =>
     dispatch => {
-      console.log(attachments);
       let payload = {
         id: messageId_iterate(),
         message,

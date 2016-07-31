@@ -1,19 +1,8 @@
 'use strict';
 
-const ux_initialState = {
-  chat: {
-    chatField: {
-      value: ''
-    }
-  }
-}
+import { combineReducers } from 'redux';
+import { uxChatReducer as chat } from '../../ChatProvider/exportReducers';
 
-export const uxReducer = (state = ux_initialState, action) => {
-  let nextState = Object.assign({}, state);
-  switch(action.type){
-    case 'UPDATE_CHAT_FIELD':
-      nextState.chat.chatField.value = action.payload;
-      break;
-  }
-  return nextState;
-}
+export const uxReducer = combineReducers({
+  chat
+})

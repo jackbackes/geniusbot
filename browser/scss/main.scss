@@ -1,3 +1,100 @@
+
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+@import "../../bower_components/bootstrap-material-design/sass/_variables.scss";
+@import "../../bower_components/bootstrap-material-design/sass/_colors.scss";
+
+
+@mixin breakpoint($points...) {
+     @each $point in $points{
+        @if $point == desktop {
+             @media (min-width: $desktop-width){
+                @content;
+            }
+        }
+        @else if $point == laptop {
+             @media (min-width: $laptop-width){
+                @content;
+            }
+        }
+        @else if $point == tablet {
+             @media (min-width: $tablet-width){
+                @content;
+            }
+        }
+        @else if $point == phablet {
+             @media (min-width: $phablet-width){
+                @content;
+            }
+        }
+        @else if $point == mobileonly {
+             @media (min-width: $mobile-only-width){
+                @content;
+            }
+        }
+        @else if $point == largescreen {
+             @media (min-width: $large-width){
+                @content;
+            }
+        }
+        @else if $point == landscape {
+             @media (max-device-width: $mobile-only-width ) and (orientation: landscape){
+                @content;
+            }
+        }
+    }
+}
+
+
+//colors
+// Bootstrap brand color customization
+$brand-primary: $teal !default;
+$brand-secondary: $orange-800 !default;
+$brand-success: $green !default;
+$brand-danger: $red !default;
+$brand-warning: $deep-orange !default;
+$brand-info: $light-blue !default;
+$mdb-brand-inverse: complement($brand-primary) !default;
+$brand-inverse: $mdb-brand-inverse;
+
+$body-background: #fdfdfd;
+
+//breakpoints
+$mobile-only-width: $screen-xs-min;
+$phablet-width: $screen-sm-min;
+$tablet-width: $screen-sm-min;
+$laptop-width: $screen-md-min;
+$desktop-width: $screen-md-min;
+$large-width: $screen-lg-min;
+$mobile-landscape: 100px;
+
+//logo
+$logo-width: 40px;
+$logo-margin-top: 5px;
+$logo-margin-right: 20px;
+
+
+//search bar
+$search-bar-margin-top: 10px;
+$search-bar-margin-left: 50px;
+$search-bar-width: 500px;
+$navbar-fixed-left-width: 100vw;
+
+@include breakpoint(mobileonly) {
+  //logo
+  $logo-width: 40px;
+  $logo-margin-top: 5px;
+  $logo-margin-right: 20px;
+
+
+  //search bar
+  $search-bar-margin-top: 10px;
+  $search-bar-margin-left: 50px;
+  $search-bar-width: 500px;
+
+  //navbar
+  $navbar-border-radius: 0;
+}
+
 * {
   box-sizing: border-box;
 }

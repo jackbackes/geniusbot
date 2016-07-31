@@ -7,39 +7,19 @@ import IconButton from 'material-ui/IconButton';
 import SendIcon from 'material-ui/svg-icons/content/send'
 import ChatInputProvider from './chatInputProvider.js'
 import RefreshIndicator from 'material-ui/RefreshIndicator';
-
-
-const style = {
-  chatInput: {
-    position: 'fixed',
-    bottom: '0px',
-    width: '100vw',
-    backgroundColor: 'white'
-  },
-  chatInputContainer: {
-    position: 'fixed',
-    bottom: '0px',
-    width: '100vw',
-    backgroundColor: 'white',
-    paddingRight: '2vw',
-    paddingLeft: '2vw'
-  },
-  chatInputSendButton: {
-    float: 'right'
-  }
-}
+import {style, classes} from './style';
 
 const ChatField = (props) =>
   React.createElement(
     TextField,
     Object.assign(
       {
-        onChange: props.onChange
+        onChange: props.onChange,
+        onKeyPress: props.handleKeyPress
       },
       props
     )
   )
-
 
 const SendChat = (props) =>
   React.createElement(
@@ -47,7 +27,7 @@ const SendChat = (props) =>
     Object.assign(
       {
         children: (props.isSending ? (<RefreshIndicator left={0} top={0} status={'loading'} />) : (<SendIcon />)),
-        onClick: props.onClick
+        onClick: props.handleOnClick
       },
       props
     )
@@ -59,13 +39,27 @@ const ChatInput = React.createClass({
     actions.start();
   },
   render(){
-    const {actions, currentMessage, userId, isSending} = this.props;
+    const {styles, actions, currentMessage, userId, isSending} = this.props;
     return (
       <Paper
-      style={style.chatInput}
+      style={styles.chatInput}
       children={[
-        ChatField({id:'chatInput', style: style.chatInput, key: 0, onChange: actions.updateChatField, value: currentMessage}),
-        SendChat({style: style.chatInputSendButton, key:1, onClick: actions.requestSendMessage.bind(this, currentMessage, userId, null), isSending})
+        ChatField({
+          id:'chatInput',
+          style: styles.chatInput,
+          key: 0,
+          onChange: actions.updateChatField,
+          value: currentMessage,
+          handleKeyPress: (e) =>
+            e.key === "Enter" ?
+            actions.requestSendMessage(currentMessage, userId, null) :
+            null
+        }),
+        SendChat({
+          style: styles.chatInputSendButton,
+          key:1,
+          handleOnClick: actions.requestSendMessage.bind(this, currentMessage, userId, null),
+          isSending})
       ]}
       />
     )

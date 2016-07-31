@@ -5,11 +5,10 @@ import {ChatInput, GeniusBotImages, ChatProvider, Message} from './imports';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 const _ = require('lodash');
-// mock data
 
 const ChatBox = React.createClass({
   render(){
-    let {messages, users, selfId} = this.props;
+    let {messages, users, selfId, styles, ux} = this.props;
     let renderedMessages = messages.map(message => {
       Object.defineProperties(message, {
         "itemIndex": {
@@ -22,6 +21,7 @@ const ChatBox = React.createClass({
         }
       })
       return message;
+      // PROXIES ARE NOT IMPLEMENTED IN SAFARI
       // new Proxy(
       //   message,
       //   {
@@ -45,7 +45,9 @@ const ChatBox = React.createClass({
               attachments: chatItem.attachments,
               itemIndex: chatItem.itemIndex,
               selfId,
-              isFetching: chatItem.isFetching
+              styles: styles.chatMessage,
+              isFetching: chatItem.isFetching,
+              ux
             })}
       )} />
     )

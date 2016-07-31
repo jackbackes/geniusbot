@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { grey900, amber700 } from 'material-ui/styles/colors'
-// import Navbar from '../../Containers/Navbar'
 
 const muiTheme = getMuiTheme({
   palette: {

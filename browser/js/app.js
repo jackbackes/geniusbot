@@ -9,16 +9,22 @@ import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import routes from './components/Providers/App/Routes/index.js'
 import configureStore from './components/Providers/App/configureStore.js'
-import injectTapEventPlugin from 'react-tap-event-plugin'
-// import {GeniusBotObserver, GeniusBotSelector} from './components/Providers/ChatProvider/chatModules';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import ga from 'ga-react-router';
 
 injectTapEventPlugin()
 
+//configure redux store
 export const store = configureStore(browserHistory)
+
+//configure router history
 const history = syncHistoryWithStore(browserHistory, store)
 
-// GeniusBotObserver(store, GeniusBotSelector);
+//configure google analytics. add listener to router history.
+const unlisten = history.listen(location => {
+  ga('set', 'page', location.pathname);
+  ga('send', location);
+});
 
 render(
   <Provider store={store}>
@@ -26,4 +32,7 @@ render(
       {routes}
     </Router>
   </Provider>
-  , document.getElementById('app'))
+  , document.getElementById('app'));
+
+//unlisten google analytics
+unlisten();

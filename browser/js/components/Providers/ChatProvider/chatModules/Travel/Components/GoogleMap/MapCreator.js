@@ -17,19 +17,19 @@ const MapCreator = ({origin, destination}) => React.createClass( {
   },
 
   onDragEnd( e ) {
-    console.log( 'onDragEnd', e );
+    // console.log( 'onDragEnd', e );
   },
 
   onCloseClick() {
-    console.log( 'onCloseClick' );
+    // console.log( 'onCloseClick' );
   },
 
   onClick( e ) {
-    console.log( 'onClick', e );
+    // console.log( 'onClick', e );
   },
 
   render() {
-    console.log('creating map', origin, destination);
+    // console.log('creating map', origin, destination);
     const markers = [];
     let lat = 0;
     let lng = 0;
@@ -46,7 +46,7 @@ const MapCreator = ({origin, destination}) => React.createClass( {
       lat+=destination.geometry.location.lat;
       lng+=destination.geometry.location.lng; markerCount++
     };
-    console.log('markers to create map:', markers);
+    // console.log('markers to create map:', markers);
     return (
       < Gmaps
         width = { '100%' }

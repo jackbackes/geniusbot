@@ -6,22 +6,10 @@ import {ListItem} from 'material-ui/List';
 import CircularProgress from 'material-ui/CircularProgress'
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
-const styles = {
-  refresh: (isSelf) => {
-    let float = isSelf ? 'left' : 'right';
-    return {
-      display: 'inline-block',
-      position: 'relative',
-      float,
-      marginLeft: '20px',
-      marginRight: '20px',
-      marginTop: '-12px'
-    }
-  }
-}
+const refresh = (isSelf) => isSelf ? 'left' : 'right';
 
 export const Message = (messagePayload) => {
-  const {message, user, attachments, selfId, itemIndex, isFetching} = messagePayload;
+  const {message, user, attachments, selfId, itemIndex, isFetching, styles, ux} = messagePayload;
   return <MessagePresentational
     message={message}
     user={user}
@@ -29,21 +17,24 @@ export const Message = (messagePayload) => {
     selfId={selfId}
     key={itemIndex}
     isFetching={isFetching}
+    styles={styles}
+    ux={ux}
     />
 }
 
 const MessagePresentational = React.createClass({
   render(){
-    const {message, user, attachments, selfId, isFetching} = this.props;
+    const {message, user, attachments, selfId, isFetching, styles, ux} = this.props;
+    let messageStyles = styles;
     const options = {}
     let isSelf;
     if(user){
       isSelf = user.id === selfId;
       if(user.avatar) {
         isSelf ?
-        options.leftAvatar = <Avatar src={user.avatar} /> :(
+        options.leftAvatar = <Avatar size={ux.avatar.defaultSize} src={user.avatar} /> :(
         Object.assign(options, {
-          rightAvatar: <Avatar src={user.avatar} />
+          rightAvatar: <Avatar size={ux.avatar.defaultSize} src={user.avatar} />
         }))
       }
     }
@@ -53,7 +44,21 @@ const MessagePresentational = React.createClass({
       options.autoGenerateNestedIndicator = false;
     }
     if(isFetching){
-      options.children = (<RefreshIndicator key={0} style={styles.refresh(isSelf)} left={0} top={0} status={'loading'} />)
+      let {marginLeft, marginRight, marginTop, display, position} = messageStyles;
+      let refreshStyle = Object.assign(
+        {}, {
+          marginLeft,
+          marginRight,
+          marginTop,
+          display,
+          position,
+          float: refresh(isSelf)
+        })
+      options.children = (
+        <RefreshIndicator key={0}
+        style={refreshStyle}
+        left={0} top={0} status={'loading'} />
+      )
     } else if(message){
       options.primaryText = message;
     }

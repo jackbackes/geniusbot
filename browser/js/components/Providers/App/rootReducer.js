@@ -1,20 +1,22 @@
 'use strict'
 
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { chatReducer, travelReducer } from '../ChatProvider/exportReducers';
-import { uxReducer } from './Reducers/ux';
+import { routerReducer as routing } from 'react-router-redux';
+import {
+  chatReducer as chat,
+  travelReducer as travel,
+  imageTagsReducer as imageTags } from '../ChatProvider/exportReducers';
+import { uxReducer as ux } from './Reducers/ux';
 
 
 const rootReducer = combineReducers({
-  chat: chatReducer,
+  chat,
   chatModules: combineReducers({
-    travel: travelReducer
+    travel,
+    imageTags
   }),
-  routing: routerReducer,
-  ux: uxReducer
+  routing,
+  ux
 })
-
-console.log('root reducer', rootReducer);
 
 export default rootReducer;

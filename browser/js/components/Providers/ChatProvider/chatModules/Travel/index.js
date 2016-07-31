@@ -22,8 +22,7 @@ function* travelGenerator (){
       dispatch(requestSendMessage("Where are you starting from?", 2));
 
     input = yield 'starting airport';
-      ({message, chatModules} = input); console.log('starting airport', message)
-
+      ({message, chatModules} = input);
       dispatch(requestSendMessage("Please wait...", 2));
       Promise.try(()=> dispatch(fetchOrigin(message)))
         .then( ()=> (

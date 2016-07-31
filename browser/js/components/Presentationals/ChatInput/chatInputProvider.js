@@ -8,7 +8,8 @@ const mapStateToProps = (state, props) => {
   return {
     currentMessage: state.ux.chat.chatField.value,
     userId: state.chat.selfId,
-    isSending: !!state.chat.currentMessage
+    isSending: !!state.chat.currentMessage,
+    styles: state.ux.chat.styles
   }
 }
 

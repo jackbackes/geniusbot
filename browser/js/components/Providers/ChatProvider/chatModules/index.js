@@ -1,12 +1,12 @@
 'use strict';
 
 import {GeniusBotObserver, GeniusBotSelector} from './Bot/GeniusBot';
-
-// import {CodeGenius as start} from './CodeGenius';
+import {chatActionCreators} from './imports';
 import {travel} from './Travel';
-// import {resumes} from './Resumes';
+import scriptMaker, {imageTags, scriptGenerator as imageTagsScript} from './ImageTags';
 
 let currentCommand;
+let {requestSendMessage} = chatActionCreators;
 
 const CommandMap = new Map();
 
@@ -17,18 +17,19 @@ CommandMap
   .set('airports', travel)
   .set('distance', travel)
   .set('distance between airports', travel)
-  // .set('resume', resumes)
-  // .set('resumes', resumes)
+  .set('tag an image', imageTags)
+  .set('image tag', imageTags)
+  .set('images', imageTags)
 
 const CommandHandler = ({message, messageObj, chatModules}, dispatch, getState, select) => {
   if(!currentCommand){
-    console.log('travelling!');
     if(CommandMap.has(message)) {
       currentCommand = CommandMap.get(message);
+    } else {
+      requestSendMessage("I'm not sure what you mean!")
     }
   }
   if(currentCommand) {
-    console.log('currentCommand!', message, messageObj, chatModules, dispatch, currentCommand);
     return currentCommand({message, messageObj, chatModules, dispatch, currentCommand, getState, select});
   } else {return};
 }

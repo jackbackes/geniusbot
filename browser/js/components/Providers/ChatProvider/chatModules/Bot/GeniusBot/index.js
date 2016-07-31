@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-// import {CommandMap as commandMap, CommandHandler} from './chatModules';
 import {CommandMap as commandMap, CommandHandler} from '../../';
 
 const Promise = require('bluebird');
@@ -11,7 +10,6 @@ let botId = 2;
 
 export const GeniusBotHandler = ({state, dispatch, getState, select}, CommandMap = commandMap, currentConversation = null, commandHandler = CommandHandler) => {
   if(state.message && state.messageObj.userId !== botId){
-    console.log('geniusbotHandler', state);
     return Promise.try(()=>commandHandler(state, dispatch, getState, select));
   } else {
     return
