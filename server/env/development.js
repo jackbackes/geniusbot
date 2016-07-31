@@ -9,4 +9,9 @@ module.exports = {
   "LOGGING": true,
   "MOCKDB": true,
   "GOOGLE_MAP_KEY": "AIzaSyA0f8iW6NKLrhAiN8lXPEfh2k7l2DdRISM",
+  "CLARIFAI": {
+    "clientId": "TSrz8XTFZa3UCBOXxjVym_UKM_E-rZ-6d8G45wjh",
+    "clientSecret": "7B46m262vf2Atx5dxpllN9jKRL0YN0cPzA8Uc2Wk",
+    "accessToken": null
+  }
 };

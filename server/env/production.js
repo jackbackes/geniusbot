@@ -16,5 +16,10 @@ module.exports = {
         "callbackURL": process.env.GITHUB_CALLBACK_URL
     },
     "LOGGING": true,
-    "GOOGLE_MAP_KEY": process.env.GOOGLE_MAP_KEY
+    "GOOGLE_MAP_KEY": process.env.GOOGLE_MAP_KEY,
+    "CLARIFAI": {
+      "clientId": process.env.CLARIFAI_CLIENT_ID,
+      "clientSecret": process.env.CLARIFAI_CLIENT_SECRET,
+      "accessToken": null
+    }
 };
