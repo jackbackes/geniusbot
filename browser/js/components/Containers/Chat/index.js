@@ -1,33 +1,28 @@
 'use strict';
 
 import React from 'react';
-import {ChatBox, ChatInput} from './imports';
+import {ChatBox, ChatInput, ChatProvider, StyleWatcher} from './imports';
 import Paper from 'material-ui/Paper';
 
-const style={
-  chat: {
-    minHeight: '100vh',
-    minWidth: '500px',
-    width: '30vw',
-    marginBottom: '30px'
-  }
-}
 
 const Chat = React.createClass({
+  componentDidMount(){
+    this.props.breakpoints.styleWatcher()
+  },
   render(){
     return (
-      <div>
+      <Paper style={this.props.styles.chatContainer}>
         <Paper
           children={(
             <ChatBox />
           )}
           zDepth={3}
-          style={style.chat}
+          style={this.props.styles.chat}
         />
         <ChatInput />
-      </div>
+      </ Paper>
     )
   }
 })
 
-export default Chat;
+export default ChatProvider(Chat);
