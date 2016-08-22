@@ -25,6 +25,14 @@ export const Changelog = React.createClass({
               <br />
               <hr style={styles.hr} />
               <p style={styles.small} >{
+                `Alpha Release 3 (08/22/16)
+                - minor formatting fixes
+                - homepage is now responsive
+                - chat view scrolls with new messages
+                `
+              }
+              <hr style={styles.hr} />
+              {
                 `Alpha Release 2 (08/01/16)
                 - implemented the clarifai image tagging API
                 - now Geniusbot can talk to you about your pictures!
