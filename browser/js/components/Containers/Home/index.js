@@ -13,12 +13,14 @@ import GetStarted from '../GetStarted';
 import styles from './styles';
 import HomeProvider from './HomeProvider';
 import LinkToChangeLog from './LinkToChangeLog';
+var classNames = require('classnames');
 
 class Home extends Component {
 
   render () {
+      const divClass = classNames('Home');
       return (
-        <div className={"Home"}>
+        <div className={divClass}>
         <Style rules={styles} scopeSelector={".Home"} />
           <div style={styles.paperStyle} >
             <div >

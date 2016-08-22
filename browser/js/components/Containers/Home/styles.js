@@ -6,15 +6,18 @@ const styles = {
   header: {
     marginTop: '56px',
     textAlign: 'center',
-    fontSize: '100px',
+    fontSize: '18vMin',
     color: '#fdfdfd',
     fontWeight: 900,
     fontFamily: 'Helvetica Neue',
     textShadow: '0px 0px 10px black',
+    '@media screen and (orientation: landscape)': {
+      marginTop: '0px'
+    }
   },
   subHeader: {
-    paddingLeft: '25vh',
-    paddingRight: '25vh'
+    paddingLeft: '5vw',
+    paddingRight: '5vw'
   },
   paperHeader: {
     backgroundColor: blue600,
@@ -46,7 +49,7 @@ const styles = {
     backgroundImage: 'linear-gradient(to right, transparent, white, transparent)'
   },
   p: {
-    fontSize: '23px',
+    fontSize: '4vMin',
     color: 'white',
     fontWeight: 200,
     textShadow: '0px 0px 10px black, 0px 0px 10px black, 0px 0px 10px black',

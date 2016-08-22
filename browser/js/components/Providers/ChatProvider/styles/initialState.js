@@ -19,9 +19,10 @@ export const initialStyles = {
     minHeight: '100vh',
     // minWidth: '500px',
     width: '30vw',
-    marginBottom: '30px',
+    //marginBottom: '30px',
     marginLeft: 'auto',
     marginRight: 'auto',
+    paddingBottom: '48px'
   },
   chatInput: {
     position: 'fixed',
