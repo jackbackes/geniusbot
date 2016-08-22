@@ -7,6 +7,7 @@ import CircularProgress from 'material-ui/CircularProgress'
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import animatedScroll from './animatedScroll'
 
+
 const refresh = (isSelf) => isSelf ? 'left' : 'right';
 
 export const Message = (messagePayload) => {
@@ -25,7 +26,11 @@ export const Message = (messagePayload) => {
 
 const MessagePresentational = React.createClass({
   componentDidMount(){
-    animatedScroll(window, window.document.body.scrollHeight, 500);
+    let duration = 250;
+    let fps = 10;
+    let length = duration/fps;
+    //animatedScroll(document.rootScroller, this.refs.message, 400);
+    this.refs.message.scrollIntoView({behavior: "smooth", block: "end"});
   },
   render(){
     const {message, user, attachments, selfId, isFetching, styles, ux} = this.props;
@@ -67,7 +72,9 @@ const MessagePresentational = React.createClass({
       options.primaryText = message;
     }
     return (
-      <ListItem {...options}  />
+      <div ref="message" >
+        <ListItem {...options}  />
+      </ div>
     )
   }
 })

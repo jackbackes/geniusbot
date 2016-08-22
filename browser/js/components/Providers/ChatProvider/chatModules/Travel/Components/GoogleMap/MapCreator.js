@@ -12,7 +12,9 @@ const MapCreator = ({origin, destination}) => React.createClass( {
   onMapCreated( map ) {
 
     map.setOptions( {
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      scrollwheel: false,
+      zoomcontrol: true
     } );
   },
 
@@ -29,7 +31,6 @@ const MapCreator = ({origin, destination}) => React.createClass( {
   },
 
   render() {
-    // console.log('creating map', origin, destination);
     const markers = [];
     let lat = 0;
     let lng = 0;
@@ -46,7 +47,6 @@ const MapCreator = ({origin, destination}) => React.createClass( {
       lat+=destination.geometry.location.lat;
       lng+=destination.geometry.location.lng; markerCount++
     };
-    // console.log('markers to create map:', markers);
     return (
       < Gmaps
         width = { '100%' }
